@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+<style>
+  html, body { margin:0; padding:0; height:100%; overflow:hidden; }
+  .leaflet-container { position: relative !important; }
+</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4ad77cabf362a43be3e761602feb96e3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.control.css"/>
+</head>
+<body>
+    
+    
+<div style="
+    position: absolute;
+    bottom: 60px;    /* moved up from 10px */
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #777;
+    padding: 6px;
+    font-size: 12px;
+    line-height: 1.3;
+    z-index: 1000;
+">
+  <strong>AQI Categories</strong><br>
+  <span style="color:green;">●</span>&nbsp;Good (0–50)<br>
+  <span style="color:yellow;">●</span>&nbsp;Moderate (51–100)<br>
+  <span style="color:orange;">●</span>&nbsp;Unhealthy SG (101–150)<br>
+  <span style="color:red;">●</span>&nbsp;Unhealthy (151–200)<br>
+  <span style="color:purple;">●</span>&nbsp;Very Unhealthy (201–300)<br>
+  <span style="color:maroon;">●</span>&nbsp;Hazardous (301+)
+</div>
+    
+<style>
+  #map { width:100vw; height:60vh; }
+  .folium-map { width:100%; height:100%; }
+</style>
+<div id="map"></div>
+<script>
+  // Move the Leaflet-generated map into our #map div
+  document.querySelector('#map').appendChild(document.querySelector('.folium-map'));
+</script>
+    
+            <div class="folium-map" id="map_4ad77cabf362a43be3e761602feb96e3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4ad77cabf362a43be3e761602feb96e3 = L.map(
+                "map_4ad77cabf362a43be3e761602feb96e3",
+                {
+                    center: [38.6565, -96.7405],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3888437021a058897c09db639fa495a8 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3888437021a058897c09db639fa495a8.addTo(map_4ad77cabf362a43be3e761602feb96e3);
+        
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD");
+                }
+            });
+            map_4ad77cabf362a43be3e761602feb96e3.timeDimension = L.timeDimension(
+                {
+                    period: "P1D",
+                }
+            );
+            var timeDimensionControl = new L.Control.TimeDimensionCustom(
+                {
+  "position": "bottomleft",
+  "minSpeed": 0.1,
+  "maxSpeed": 10,
+  "autoPlay": false,
+  "loopButton": true,
+  "timeSliderDragUpdate": true,
+  "speedSlider": true,
+  "playerOptions": {
+  "transitionTime": 200,
+  "loop": false,
+  "startOver": true,
+},
+}
+            );
+            map_4ad77cabf362a43be3e761602feb96e3.addControl(this.timeDimensionControl);
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Atlanta, GA<br>AQI: 53 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Atlanta, GA<br>AQI: 67 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Atlanta, GA<br>AQI: 44 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Atlanta, GA<br>AQI: 48 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Atlanta, GA<br>AQI: 46 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Atlanta, GA<br>AQI: 31 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Atlanta, GA<br>AQI: 36 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Atlanta, GA<br>AQI: 44 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-84.43, 33.65]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Billings, MT<br>AQI: 24 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Billings, MT<br>AQI: 55 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Billings, MT<br>AQI: 28 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Billings, MT<br>AQI: 28 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Billings, MT<br>AQI: 38 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Billings, MT<br>AQI: 23 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Billings, MT<br>AQI: 30 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Billings, MT<br>AQI: 41 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-108.5115, 45.7822]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Boston, MA<br>AQI: 47 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Boston, MA<br>AQI: 27 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Boston, MA<br>AQI: 39 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Boston, MA<br>AQI: 47 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Boston, MA<br>AQI: 52 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Boston, MA<br>AQI: 106 (Unhealthy for Sensitive Groups)", "icon": "circle", "style": {"radius": 6, "color": "orange", "fillColor": "orange", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Boston, MA<br>AQI: 88 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Boston, MA<br>AQI: 72 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-71.051, 42.351]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Chicago, IL<br>AQI: 98 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Chicago, IL<br>AQI: 87 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Chicago, IL<br>AQI: 69 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Chicago, IL<br>AQI: 56 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Chicago, IL<br>AQI: 49 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Chicago, IL<br>AQI: 44 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Chicago, IL<br>AQI: 61 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Chicago, IL<br>AQI: 77 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-87.659, 41.964]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Denver, CO<br>AQI: 90 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Denver, CO<br>AQI: 77 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Denver, CO<br>AQI: 71 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Denver, CO<br>AQI: 67 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Denver, CO<br>AQI: 90 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Denver, CO<br>AQI: 64 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Denver, CO<br>AQI: 49 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Denver, CO<br>AQI: 58 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-105.042, 39.9003]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Des Moines, IA<br>AQI: 42 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Des Moines, IA<br>AQI: 49 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Des Moines, IA<br>AQI: 59 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Des Moines, IA<br>AQI: 40 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Des Moines, IA<br>AQI: 35 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Des Moines, IA<br>AQI: 39 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Des Moines, IA<br>AQI: 51 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Des Moines, IA<br>AQI: 37 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.66, 41.535]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Houston, TX<br>AQI: 61 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.351, 29.751]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Houston, TX<br>AQI: 57 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.351, 29.751]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Houston, TX<br>AQI: 64 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.351, 29.751]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Houston, TX<br>AQI: 161 (Unhealthy)", "icon": "circle", "style": {"radius": 6, "color": "red", "fillColor": "red", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.351, 29.751]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Houston, TX<br>AQI: 57 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.351, 29.751]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Houston, TX<br>AQI: 70 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.351, 29.751]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Kansas City, MO<br>AQI: 33 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Kansas City, MO<br>AQI: 58 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Kansas City, MO<br>AQI: 56 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Kansas City, MO<br>AQI: 45 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Kansas City, MO<br>AQI: 35 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Kansas City, MO<br>AQI: 50 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Kansas City, MO<br>AQI: 51 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Kansas City, MO<br>AQI: 51 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-94.552, 39.122]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Minneapolis, MN<br>AQI: 85 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Minneapolis, MN<br>AQI: 57 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Minneapolis, MN<br>AQI: 42 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Minneapolis, MN<br>AQI: 72 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Minneapolis, MN<br>AQI: 139 (Unhealthy for Sensitive Groups)", "icon": "circle", "style": {"radius": 6, "color": "orange", "fillColor": "orange", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Minneapolis, MN<br>AQI: 52 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Minneapolis, MN<br>AQI: 39 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Minneapolis, MN<br>AQI: 64 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-93.185, 44.955]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "New York, NY<br>AQI: 58 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "New York, NY<br>AQI: 42 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "New York, NY<br>AQI: 58 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "New York, NY<br>AQI: 90 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "New York, NY<br>AQI: 90 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "New York, NY<br>AQI: 98 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "New York, NY<br>AQI: 102 (Unhealthy for Sensitive Groups)", "icon": "circle", "style": {"radius": 6, "color": "orange", "fillColor": "orange", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "New York, NY<br>AQI: 87 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-73.8359, 40.8419]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Omaha, NE<br>AQI: 31 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Omaha, NE<br>AQI: 41 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Omaha, NE<br>AQI: 40 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Omaha, NE<br>AQI: 44 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Omaha, NE<br>AQI: 34 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Omaha, NE<br>AQI: 50 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Omaha, NE<br>AQI: 46 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Omaha, NE<br>AQI: 37 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-95.9836, 41.2655]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Philadelphia, PA<br>AQI: 53 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Philadelphia, PA<br>AQI: 56 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Philadelphia, PA<br>AQI: 48 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Philadelphia, PA<br>AQI: 61 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Philadelphia, PA<br>AQI: 74 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Philadelphia, PA<br>AQI: 94 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Philadelphia, PA<br>AQI: 88 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Philadelphia, PA<br>AQI: 56 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-75.151, 39.95]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Phoenix, AZ<br>AQI: 98 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Phoenix, AZ<br>AQI: 55 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Phoenix, AZ<br>AQI: 84 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Phoenix, AZ<br>AQI: 93 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Phoenix, AZ<br>AQI: 80 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Phoenix, AZ<br>AQI: 80 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Phoenix, AZ<br>AQI: 73 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Phoenix, AZ<br>AQI: 84 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-112.071, 33.543]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "San Francisco, CA<br>AQI: 14 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "San Francisco, CA<br>AQI: 22 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "San Francisco, CA<br>AQI: 21 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "San Francisco, CA<br>AQI: 20 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "San Francisco, CA<br>AQI: 17 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "San Francisco, CA<br>AQI: 17 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "San Francisco, CA<br>AQI: 18 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "San Francisco, CA<br>AQI: 24 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.43, 37.75]}}, {"type": "Feature", "properties": {"time": "2025-07-21T00:00:00", "popup": "Seattle, WA<br>AQI: 51 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-22T00:00:00", "popup": "Seattle, WA<br>AQI: 48 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-23T00:00:00", "popup": "Seattle, WA<br>AQI: 51 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-24T00:00:00", "popup": "Seattle, WA<br>AQI: 44 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-25T00:00:00", "popup": "Seattle, WA<br>AQI: 42 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-26T00:00:00", "popup": "Seattle, WA<br>AQI: 52 (Moderate)", "icon": "circle", "style": {"radius": 6, "color": "yellow", "fillColor": "yellow", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-27T00:00:00", "popup": "Seattle, WA<br>AQI: 43 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}, {"type": "Feature", "properties": {"time": "2025-07-28T00:00:00", "popup": "Seattle, WA<br>AQI: 50 (Good)", "icon": "circle", "style": {"radius": 6, "color": "green", "fillColor": "green", "fillOpacity": 0.7}}, "geometry": {"type": "Point", "coordinates": [-122.3405, 47.562]}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                        if (feature.properties.tooltip) {
+                        layer.bindTooltip(feature.properties.tooltip);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_708f091de6087dc54c0a1ec052e6b9e0 = L.timeDimension.layer.geoJson(
+                geoJsonLayer,
+                {
+                    updateTimeDimension: true,
+                    addlastPoint: true,
+                    duration: undefined,
+                }
+            ).addTo(map_4ad77cabf362a43be3e761602feb96e3);
+        
+    
+            map_4ad77cabf362a43be3e761602feb96e3.fitBounds(
+                [[29.751, -122.43], [47.562, -71.051]],
+                {}
+            );
+        
+</script>
+</html>
