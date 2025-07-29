@@ -1,0 +1,12 @@
+# render.yaml
+services:
+  - type: web
+    name: aqi-explorer
+    env: python
+    region: oregon # or your preferred region
+    plan: starter # free tier
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT
+    envVars:
+      - key: AIRNOW_API_KEY
+        sync: false # you’ll set the value in the dashboard
