@@ -71,28 +71,28 @@ if st.sidebar.button("Test NYC fetch"):
 
 # --- Data Loading (cached) ---
 @st.cache_data
-def load_aqi_data(zips, city_labels, start, end):
+def load_aqi_data(zips, city_labels, start, end, selected_cities):
     dates = pd.date_range(start, end)
     records = []
     for zip_code, city in zip(zips, city_labels):
-        if city in selected:
+        if city in selected_cities:
             for dt in dates:
                 try:
                     obs_list = fetch_daily_aqi(zip_code, dt.strftime("%Y-%m-%d"))
                     for obs in obs_list:
                         records.append({
-                            "date":      pd.to_datetime(obs["DateObserved"]),
-                            "city":      city,
-                            "AQI":       obs["AQI"],
-                            "category":  obs["Category"]["Name"],
-                            "lat":       obs["Latitude"],
-                            "lon":       obs["Longitude"]
+                            "date":     pd.to_datetime(obs["DateObserved"]),
+                            "city":     city,
+                            "AQI":      obs["AQI"],
+                            "category": obs["Category"]["Name"],
+                            "lat":      obs["Latitude"],
+                            "lon":      obs["Longitude"]
                         })
                 except Exception:
                     continue
     return pd.DataFrame(records)
 
-df = load_aqi_data(zip_codes, labels, start_date, end_date)
+df = load_aqi_data(zip_codes, labels, start_date, end_date, selected)
 
 # --- Time‑Series Plot ---
 st.subheader("Daily Max AQI Trends")
